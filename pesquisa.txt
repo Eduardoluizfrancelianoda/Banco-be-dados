@@ -1,0 +1,24 @@
+-principais sgbds, relacionais e não relacionais
+-principais caracteristicas
+-vantagens não relacional vs relacional
+-valores
+-empresas que utilizam
+
+MySQL: O MySQL é um dos bancos de dados mais populares e gratuitos, conhecido por sua multiplataforma e comunidade ativa. Ele é amplamente 
+utilizado por grandes empresas e é fácil de aprender e programar.
+
+OracleDB: O OracleDB é um sistema de gerenciamento de banco de dados robusto e comercial, amplamente utilizado em ambientes corporativos. 
+Ele oferece alta flexibilidade, estabilidade e suporte para grandes aplicações empresariais.
+
+SQL Server: Desenvolvido pela Microsoft, o SQL Server oferece suporte para recuperação de dados e excelente gerenciamento de banco de dados, 
+sendo ideal para ambientes profissionais e empresariais.
+
+MariaDB: Derivado do MySQL, o MariaDB é uma alternativa de código aberto que mantém a compatibilidade com o MySQL e é focado em segurança, 
+velocidade e eficiência de hardware.
+
+
+fontes:
+-https://www.treinaweb.com.br/blog/os-principais-sgbds-relacionais
+-https://www.treinaweb.com.br/blog/os-principais-sgbds-nosql
+-banco-de-dados.pdf
+-https://aws.amazon.com/pt/compare/the-difference-between-relational-and-non-relational-databases/
