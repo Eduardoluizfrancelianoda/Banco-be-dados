@@ -1,0 +1,25 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE funcionario (
+id_funcionario varchar(255) PRIMARY KEY,
+nome Texto(1),
+data_demissao date,
+cargo Texto(1),
+data_admissao date,
+salario Texto(1),
+carga_horaria date,
+RG Texto(1),
+cpf varchar(255),
+email varchar(255),
+id_departamento Texto(1)
+)
+
+CREATE TABLE departamento (
+id_departamento Texto(1) PRIMARY KEY,
+descricao Texto(1)
+)
+
+ALTER TABLE funcionario ADD FOREIGN KEY(id_departamento) REFERENCES departamento (id_departamento)
