@@ -1,0 +1,105 @@
+notepad, selects
+
+MariaDB [etecmcm3]> select * from produtos;
++------------+----------------+----------+------+-------+--------------+----------------+
+| id_produto | nome           | marca    | qtde | preco | id_categoria | unidade_medida |
++------------+----------------+----------+------+-------+--------------+----------------+
+|          1 | sabão em pó    | 25.00    |    4 |  0.00 |            1 | peso           |
+|          2 | detergente     | 3.25     |   20 |  0.00 |            1 | unidade        |
+|          3 | mussarella     | 55.00    |  100 |  0.00 |            2 | peso           |
+|          4 | iogurte        | 3.29     |    5 |  0.00 |            3 | peso           |
+|          5 | pernil         | 35.50    |   10 |  0.00 |            4 | peso           |
+|          6 | feijão         | 10.10    |   50 |  0.00 |            5 | unidade        |
+|          7 | sorvete        | 35.50    |    5 |  0.00 |            6 | peso           |
+|          8 | liquidificador | phillips |    1 | 35.00 |            7 | unidade        |
++------------+----------------+----------+------+-------+--------------+----------------+
+8 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> update produtos set marca = 'omo' where id_produto=1;
+Query OK, 1 row affected (0.007 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [etecmcm3]> select nome,qtde from produtos;
++----------------+------+
+| nome           | qtde |
++----------------+------+
+| sabão em pó    |    4 |
+| detergente     |   20 |
+| mussarella     |  100 |
+| iogurte        |    5 |
+| pernil         |   10 |
+| feijão         |   50 |
+| sorvete        |    5 |
+| liquidificador |    1 |
++----------------+------+
+8 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> select * from produtos where preco > 20;
++------------+----------------+----------+------+-------+--------------+----------------+
+| id_produto | nome           | marca    | qtde | preco | id_categoria | unidade_medida |
++------------+----------------+----------+------+-------+--------------+----------------+
+|          8 | liquidificador | phillips |    1 | 35.00 |            7 | unidade        |
++------------+----------------+----------+------+-------+--------------+----------------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE qtde <= 60;
++------------+----------------+----------+------+-------+--------------+----------------+
+| id_produto | nome           | marca    | qtde | preco | id_categoria | unidade_medida |
++------------+----------------+----------+------+-------+--------------+----------------+
+|          1 | sabão em pó    | omo      |    4 |  0.00 |            1 | peso           |
+|          2 | detergente     | 3.25     |   20 |  0.00 |            1 | unidade        |
+|          4 | iogurte        | 3.29     |    5 |  0.00 |            3 | peso           |
+|          5 | pernil         | 35.50    |   10 |  0.00 |            4 | peso           |
+|          6 | feijão         | 10.10    |   50 |  0.00 |            5 | unidade        |
+|          7 | sorvete        | 35.50    |    5 |  0.00 |            6 | peso           |
+|          8 | liquidificador | phillips |    1 | 35.00 |            7 | unidade        |
++------------+----------------+----------+------+-------+--------------+----------------+
+7 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, preco FROM produtos ORDER BY preco ASC LIMIT 5;
++-------------+-------+
+| nome        | preco |
++-------------+-------+
+| sabão em pó |  0.00 |
+| detergente  |  0.00 |
+| mussarella  |  0.00 |
+| iogurte     |  0.00 |
+| pernil      |  0.00 |
++-------------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, preco FROM produtos ORDER BY preco DESC LIMIT 5;
++----------------+-------+
+| nome           | preco |
++----------------+-------+
+| liquidificador | 35.00 |
+| sabão em pó    |  0.00 |
+| detergente     |  0.00 |
+| mussarella     |  0.00 |
+| iogurte        |  0.00 |
++----------------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT COUNT(*) AS total_produtos FROM produtos;
++----------------+
+| total_produtos |
++----------------+
+|              8 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT AVG(preco) AS preco_medio FROM produtos;
++-------------+
+| preco_medio |
++-------------+
+|    4.375000 |
++-------------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, qtde FROM produtos ORDER BY qtde DESC LIMIT 1;
++------------+------+
+| nome       | qtde |
++------------+------+
+| mussarella |  100 |
++------------+------+
+1 row in set (0.000 sec)
