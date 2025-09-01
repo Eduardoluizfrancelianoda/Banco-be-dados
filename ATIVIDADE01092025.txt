@@ -1,0 +1,118 @@
+CREATE table cliente(
+    cpf varchar(20) PRIMARY key,
+    dtnasc datetime,
+    nome varchar(100)
+);
+CREATE TABLE modelo(
+    codmodelo integer PRIMARY KEY,
+    modelo varchar(30)
+);
+CREATE TABLE veiculo(
+	placa varchar(7) PRIMARY KEY,
+    cor varchar(20),
+    cpf varchar(20),
+    codmodelo integer,
+    foreign key (cpf) REFERENCES cliente(cpf),
+    foreign key (codmodelo) REFERENCES modelo(codmodelo)
+);
+CREATE table andar(
+    codlugar integer PRIMARY KEY,
+    capacidade integer,
+    andar varchar(20)
+);
+CREATE TABLE estaciona(
+    cod INTEGER PRIMARY KEY AUTO_INCREMENT,
+    horSaida DATETIME,
+    dtEntrada DATETIME,
+    horEntrada DATETIME,
+    dtSaida DATETIME,
+    placa VARCHAR(7),
+    codlugar INTEGER,
+    FOREIGN KEY (placa) REFERENCES veiculo(placa),
+    FOREIGN KEY (codlugar) REFERENCES andar(codlugar)
+);
+
+
+INSERTS:
+
+INSERT INTO cliente (cpf, dtnasc, nome) VALUES 
+('123.456.789-11', '2000-12-11', 'Josismar Deolhoemnós da Silva'),
+('987.654.321-00', '1995-05-21', 'Ana Paula Rodrigues'),
+('111.222.333-44', '1988-03-15', 'Carlos Henrique Souza'),
+('555.666.777-88', '2001-07-09', 'Maria Fernanda Lima'),
+('999.888.777-66', '1979-11-30', 'João Pedro Almeida'),
+('444.333.222-11', '1990-01-01', 'Beatriz Rocha'),
+('321.654.987-00', '2002-04-17', 'Lucas Gabriel Nogueira'),
+('741.852.963-10', '1998-08-25', 'Patrícia Gomes Costa'),
+('852.963.741-20', '1985-09-10', 'Roberto Carlos Santana'),
+('159.753.486-30', '2003-06-05', 'Juliana Martins Soares');
+
+INSERT INTO modelo (codmodelo, modelo) VALUES
+(1, 'Fiat Uno'),
+(2, 'Chevrolet Onix'),
+(3, 'Volkswagen Gol'),
+(4, 'Toyota Corolla'),
+(5, 'Honda Civic'),
+(6, 'Hyundai HB20'),
+(7, 'Renault Kwid'),
+(8, 'Ford Ka'),
+(9, 'Nissan Versa'),
+(10, 'Peugeot 208');
+
+INSERT INTO veiculo (placa, cor, cpf, codmodelo) VALUES
+('ABC1234', 'Prata', '123.456.789-11', 1),
+('DEF5678', 'Preto', '987.654.321-00', 2),
+('GHI9012', 'Branco', '111.222.333-44', 3),
+('JKL3456', 'Vermelho', '555.666.777-88', 4),
+('MNO7890', 'Azul', '999.888.777-66', 5),
+('PQR1234', 'Cinza', '444.333.222-11', 6),
+('STU5678', 'Verde', '321.654.987-00', 7),
+('VWX9012', 'Amarelo', '741.852.963-10', 8),
+('YZA3456', 'Rosa', '852.963.741-20', 9),
+('BCD7890', 'Marrom', '159.753.486-30', 10);
+
+INSERT INTO andar (codlugar, capacidade, andar) VALUES
+(1, 50, 'Térreo'),
+(2, 40, '1º Andar'),
+(3, 35, '2º Andar'),
+(4, 45, '3º Andar'),
+(5, 30, 'Subsolo 1'),
+(6, 25, 'Subsolo 2'),
+(7, 20, 'Subsolo 3'),
+(8, 60, 'Cobertura'),
+(9, 15, 'Anexo Leste'),
+(10, 10, 'Anexo Oeste');
+
+INSERT INTO estaciona (cod, horSaida, dtEntrada, horEntrada, dtSaida, placa, codlugar) VALUES
+(1, '2025-09-01 10:00:00', '2025-09-01', '08:00:00', '2025-09-01', 'ABC1234', 1),
+(2, '2025-09-01 11:30:00', '2025-09-01', '09:00:00', '2025-09-01', 'DEF5678', 2),
+(3, '2025-09-01 12:00:00', '2025-09-01', '10:00:00', '2025-09-01', 'GHI9012', 3),
+(4, '2025-09-01 13:15:00', '2025-09-01', '11:15:00', '2025-09-01', 'JKL3456', 4),
+(5, '2025-09-01 14:00:00', '2025-09-01', '12:00:00', '2025-09-01', 'MNO7890', 5),
+(6, '2025-09-01 15:00:00', '2025-09-01', '13:00:00', '2025-09-01', 'PQR1234', 6),
+(7, '2025-09-01 16:30:00', '2025-09-01', '14:00:00', '2025-09-01', 'STU5678', 7),
+(8, '2025-09-01 17:00:00', '2025-09-01', '15:00:00', '2025-09-01', 'VWX9012', 8),
+(9, '2025-09-01 18:00:00', '2025-09-01', '16:00:00', '2025-09-01', 'YZA3456', 9),
+(10, '2025-09-01 19:00:00', '2025-09-01', '17:00:00', '2025-09-01', 'BCD7890', 10);
+
+
+UPDATES:
+UPDATE cliente SET nome= 'carla henriquiel das souzas' where cpf='111.222.333-44';
+UPDATE veiculo SET cor='cinza azul meio-clareado' where placa='DEF5678';
+
+
+DELETES:
+DELETE FROM estaciona 
+WHERE placa = 'BCD7890' AND codlugar = 10 AND cod = 10;
+
+DELETE FROM veiculo 
+WHERE placa = 'BCD7890';
+
+DELETE FROM modelo 
+WHERE codmodelo = 10;
+
+DELETE FROM andar 
+WHERE codlugar = 10;
+
+DELETE FROM cliente 
+WHERE cpf = '159.753.486-30';
